@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/add">Add Student</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <h1>Student List</h1>
+            <form method="POST" class="filter-form">
+                <label for="semester">Filter by Semester:</label>
+                <select name="semester" id="semester" onchange="this.form.submit()">
+                    <option value="">All</option>
+                    {% for sem in semesters %}
+                        <option value="{{ sem }}" {% if selected_sem and selected_sem|int == sem %}selected{% endif %}>Semester {{ sem }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>USN</th>
+                        <th>Name</th>
+                        <th>Semester</th>
+                        <th>Subject</th>
+                        <th>Test 1</th>
+                        <th>Test 2</th>
+                        <th>Test 3</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.usn }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.sem }}</td>
+                        <td>{{ student.subject }}</td>
+                        <td>{{ student.marks_test1 }}</td>
+                        <td>{{ student.marks_test2 }}</td>
+                        <td>{{ student.marks_test3 }}</td>
+                        <td>
+                            <a href="/edit/{{ student.id }}">Edit</a>
+                            <a href="/delete/{{ student.id }}" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

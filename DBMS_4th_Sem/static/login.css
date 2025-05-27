@@ -1,0 +1,162 @@
+/* Reset default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Animated gradient background */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f0f3e, #1e1e2f, #3a3a5a);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    color: #fff;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Login container */
+.login-container {
+    perspective: 1000px;
+    z-index: 1;
+}
+
+/* Login form box */
+.login-form {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    transform: rotateY(5deg) rotateX(3deg);
+    transition: transform 0.5s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.login-form:hover {
+    transform: rotateY(0deg) rotateX(0deg);
+}
+
+/* KSIT AIML 3D heading */
+.logo-3d {
+    font-size: 36px;
+    font-weight: 900;
+    color: #f0c674;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-shadow:
+        1px 1px 2px #000,
+        2px 2px 4px #2e2e2e,
+        3px 3px 6px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(240, 198, 116, 0.5);
+    animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.login-form h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Input styling */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: #bbb;
+}
+
+.input-group input:focus {
+    border-color: #f0c674;
+    background: rgba(255, 255, 255, 0.25);
+    outline: none;
+}
+
+/* Button styling */
+.btn {
+    background: linear-gradient(145deg, #f0c674, #ffd97c);
+    color: #1e1e2f;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(240, 198, 116, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #ffd97c, #f0c674);
+    box-shadow: 0 0 10px #f0c674;
+}
+
+/* Error message */
+.error-message {
+    color: #ff6b6b;
+    margin-top: 12px;
+    font-size: 14px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 500px) {
+    .login-form {
+        padding: 30px 20px;
+    }
+
+    .logo-3d {
+        font-size: 28px;
+    }
+
+    .login-form h2 {
+        font-size: 24px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}
